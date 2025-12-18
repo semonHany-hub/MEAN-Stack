@@ -89,5 +89,3 @@
  ngOnDestroy() ->called while leaving the comp-page. after implementing them.
 -implements keyword used for inheritence in typescript.
 -<ng-content></> in child comp used to receive template that might be written in its selector in parent comp.
-
--in users mongoDB: semon password:my dad, sosana hany:dadmom
