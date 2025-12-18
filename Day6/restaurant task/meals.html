@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza</title>
+    <style>
+      /* #header-img{
+            width:100%;
+            height:300px;
+        } */
+      ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+      }
+      li {
+        padding: 10px;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+      }
+      header {
+        background-color: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      .meal-div {
+        width: 200px;
+        margin: 10px;
+        padding: 10px;
+      }
+      .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+      .meal-div {
+        width: 200px;
+        height: 500px;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+      }
+      .content-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .content-container > img {
+        width: 100%;
+        height: 100%;
+      }
+      .meal-div img {
+        width: 200px;
+        height: 250px;
+      }
+      h3 {
+        overflow: hidden;
+      }
+      button {
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        cursor: pointer;
+      }
+      button:hover {
+        transform: translateY(-3px);
+      }
+      .details {
+        margin-left: 5px;
+      }
+      .details-container {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        /* z-index: 1; */
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #meal-details {
+        position: relative;
+        width: 350px;
+        height: 500px;
+        text-align: center;
+        padding: 15px;
+        color: white;
+        background-color: black;
+        font-size: 20px;
+      }
+      #meal-details img {
+        width: 250px;
+        height: 300px;
+      }
+      #close {
+        position: absolute;
+        top: 5px;
+        right: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 30px;
+        cursor: pointer;
+      }
+      #close:hover {
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a onclick="switchingPages('home')">home</a></li>
+          <li><a onclick="switchingPages('Pizza')">pizza</a></li>
+          <li><a onclick="switchingPages('Pasta')">pasta</a></li>
+          <li><a onclick="switchingPages('Kebab')">kebab</a></li>
+          <li><a onclick="switchingPages('Mango')">mango</a></li>
+          <li><a onclick="switchingPages('popcorn')">popcorn</a></li>
+          <li><a onclick="switchingPages('hamburger')">hamburger</a></li>
+          <li><a onclick="switchingPages('cake')">cake</a></li>
+          <li><a onclick="switchingPages('fries')">fries</a></li>
+          <li><a onclick="switchingPages('chips')">Cookies</a></li>
+          <li><a onclick="switchingPages('chicken')">chicken</a></li>
+          <li><a onclick="switchingPages('croissant')">croissant</a></li>
+          <li><a onclick="switchingPages('ice cream')">ice cream</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="content-container"></div>
+    <script>
+      function switchingPages(page) {
+        if (page == "home") {
+          document.querySelector(".content-container").innerHTML =
+            "<img src=food.webp>";
+          return;
+        }
+        document.querySelector(".content-container").innerHTML = "";
+        getMeal(page);
+      }
+
+      function getMeal(recipe) {
+        var req = new XMLHttpRequest();
+        req.open(
+          "GET",
+          `https://forkify-api.herokuapp.com/api/search?q=${recipe}`
+        ); //initialise(establish) connection
+        req.send();
+        req.addEventListener("readystatechange", () => {
+          if (req.readyState == 4 && req.status == 200) {
+            let response = JSON.parse(req.response)["recipes"];
+            for (let Meal of response) {
+              let meal = document.createElement("div");
+              meal.className = "meal-div";
+              let details_btn = document.createElement("button");
+              details_btn.className = "details";
+              details_btn.textContent = "details";
+              details_btn.addEventListener("click", () => {
+                showDetails(Meal);
+              });
+              meal.innerHTML = `<img src=${Meal.image_url}>
+                    <h3>${Meal.title}</h3>
+                    <button class='source'><a href=${Meal.source_url}>source</a></button>`;
+              meal.appendChild(details_btn);
+              document.querySelector(".content-container").appendChild(meal);
+            }
+          }
+        });
+      }
+      function showDetails(Meal) {
+        console.log("done!");
+        let details_container = document.createElement("div");
+        details_container.className = "details-container";
+        let closeBtn = document.createElement("span");
+        closeBtn.id = "close";
+        closeBtn.innerHTML = "&times;";
+        closeBtn.addEventListener("click", function () {
+          details_container.remove();
+        });
+        let meal = document.createElement("div");
+        meal.id = "meal-details";
+        meal.innerHTML = `<img src=${Meal.image_url}>
+            <h3>${Meal.title}</h3>
+            <div class='additional-details'>
+            <p><strong>Publisher: </strong>${Meal.publisher}</p>
+            <p><strong>Description: </strong>lorem ipsumefdfdv xcvxcs ajnng afstwadg dfzbgv cgfbsg_bxu ef,sn</p>
+            </div>`;
+        meal.appendChild(closeBtn);
+        details_container.appendChild(meal);
+        document.body.appendChild(details_container);
+      }
+
+      switchingPages("home");
+    </script>
+  </body>
+</html>

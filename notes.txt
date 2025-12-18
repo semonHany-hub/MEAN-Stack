@@ -1,0 +1,93 @@
+-'ctrl+ backtick' open and close the terminal.
+-to install typescript packets or angular we must first install node.js packets using 'npm install' locally.
+- pascal-case means first letter of each word is capital,  while camel-case the first letter of sentence small but other follow camel-case 
+- we used the URL 'https://forkify-api.herokuapp.com/api/search?q=${recipe}' for fetching recipes from forkify website.
+
+                            typescript
+'npm -i -g typescript' this command in terminal will install typescript globally(-g) in your device.
+'tsc --version' show the version of the current installed typescript packets
+'tsc file-name.ts' this command copy js file from this ts file to be runnable by the browser
+'tsc --init' used to create tsconfig.json file
+'tsc --watch' update changes done in ts file to js file.
+- js is loosely(dynamic) typed language where its variables types determined in run time.
+- ts lang is static typed where its variables types determined while writing code manually.
+-type declaration:type(keyword) typeName=[string,number,boolean,any].
+-enum in ts is an object, while in js is an array.
+
+                    classes in ES6, typescript
+-abstract property mustn't has initializer.
+-child class constructor must has super() call in its body.
+
+                              AJAX
+-different applications[ios->swift, android->java-kotlin, web->js, desktop->js-java-c#] each of them has a different built-in function to deal with the request API.
+-AJAX (async js and xml)
+-request APIs is a method to communicate between front<->back or back<->back.
+-ready state values:[0->not establish, 1->establish connection, 2->backend received req, 3->backend process req, 4->backend respond].
+-request methods:[GET-> fetch, POST->send, PUT->update, PATCH->small-update, DELETE].
+-request status:[404->notfound, 200->success]
+
+                            review_basics
+- event-loop(js lifecycle):short-time tasks go to task-queue while async function or need-to-wait funcs go to web-services corner until it become ready then go to task-queue,
+ while functions in task-queue wait the execution(call)stack to be empty.
+-callBack function is a function body called inside another function.
+-hoisting, redeclaration, reassignment feasibility and scope_blocking with var, let, const declared variables: [*hoisting->var, *redeclaration->var, *reassignment->var, let, *function_block->var, let, const, *scope_block(condition, loop)->let, const];
+-the property opacity:0.3 make the whole element with its child elements transparent then when we show the meal details above the main page we give its container background-color:rgba(0,0,0,0.3).
+-charset:"utf-8" is a symboling languages.
+
+
+                             Node.js
+-'npm install nodemon' then we can run command 'npx nodemon file_name.js' or simply 'nodemon' to enable listening to any change and auto-updating, use rs to restart manual whenever you want.
+-'node file_name.js' this command run node server                        
+-node.js server read strings by default,
+ but if we want to change it we use the method setHeader in response and pass to it two parameters:
+ the first represent the property and the second is its value.
+-postman app used to test for request methods for back-end developer
+-if we want to read arrays or objects we set Content-Type to the value application/json and always use the method JSON.stringify() in res.end()
+
+
+                            express
+-'http cats' website show you http status cases in funny way
+-LTS(latest supported) version of an app means many editions have been done on it , while current version mean that it's the most modern but there's a probability for bugs
+-'npm init -y' used to initialise your express project, with the flag'-y' it will check the truth of your commands,
+ then we install express library locally in the project folder using 'npm i express'.
+-'npm i live-server -D' install live-server with the flag "-D" stand for "--save-development" will be saved in devDependencies object
+-we add property "start" in the object script in package.json file in Day11 folder to enable using command 'npm start' while running the server,
+ but when we add a vague name as "semon" we use command 'npm run semon'.
+-the command 'require("")' used n ES5 ,instead we use import command in ES6.
+-synchronous exec means execute line by line on single thread, although js is async with single thread as it use 'lib UV' which belongs to node.js and provides threads pool.
+-'jwt(json web token)' website used to decoding and encoding, while 'Bcrypt hash' used for encoding
+-hashing in bcrypt library consist of [4-19] rounds , each round is of 4 stages.
+-bcrypt library is one-way-encryption ,then it doesn't has a method for decipher.
+-mongoose provide ODM(object document model) library to enable connecting mongoDB to express
+-when we use static arrays with CRUD operations all changes will gone after restarting server, 
+ so we use arrays defined in external json file using fs module in node.js or mongoDB using mongoose in express.js
+-install the extension 'node express'.
+-we add authentication on email and password, then authorization using jwt token in each protected request.
+-'ctrl+c' close the server
+
+
+                            angular
+-frameworks use SPA (single page application) concept which means routing between pages without refreshing.
+-angular is jsframework depending on typescript. running on CLI(command line interface).
+-CSR(client side rendering) means running on PC browser, while SSR(server side rendering) interacting with server(req-res).
+-'npm install -g @angular/cli@18' angular installation with version 18(can be changed as you want).
+-'ng version' show the version of angular, node, package manager.
+-'ng new app-name' create project structure
+-gitignore file control ignoring big-size folders while uploading to gothub.
+-public folder used to include files to access globally on the project (eg.images).
+-'ng serve -o' with the flag '-o' for '--open' will open the bage once creating server-URL.
+-spec files used for testing.
+-'ng generate component com-name' or 'ng g c c-name' for creating component with its template, style, spec and ts files.
+-binding (sharing data between template and ts files in the same component) has two types:
+ -> one-way-binding:text interpolation'{{:string}}'- event binding:'(:event)=function()(.ts)' - property binding:'[html-property]=ts-variable' 
+ -> two-way-binding:[(ngModel)]=variable(.ts).
+-in angularV17 we use decorators if-switch conditions and for loops, while previously we used ng directives in commonModule.
+-service is a class wich can e imported in components, injected in constructor parameters or use new keyword(let service=new productsService()).
+-we use services to share data and methods between components that has't direct relation enable using @Input, @Output.
+-we use in component class the methods: ngOnInit(){} ->called on loading the comp-page, 
+ ngOnChanges() ->called each time this class recieve data from parent(@Input()),
+ ngOnDestroy() ->called while leaving the comp-page. after implementing them.
+-implements keyword used for inheritence in typescript.
+-<ng-content></> in child comp used to receive template that might be written in its selector in parent comp.
+
+-in users mongoDB: semon password:my dad, sosana hany:dadmom

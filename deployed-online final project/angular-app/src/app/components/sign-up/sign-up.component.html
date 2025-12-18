@@ -1,0 +1,132 @@
+<header>
+  <h3 routerLink="/home" class="text-light">Home</h3>
+  <span class="btn btn-warning signIn" routerLink="/signIn">signIn</span>
+</header>
+<div class="container mb-3">
+  <div class="row d-flex align-items-center">
+    <div class="col-md-2">
+      <img src="assets/photos/kebab.jpg" />
+    </div>
+    <div class="col-md-6 offset-md-3">
+      <h2 class="fs-1 fw-bold mb-3">signUp</h2>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+          />
+          <div
+            class="error-message text-danger"
+            *ngIf="name?.invalid && name?.touched"
+          >
+            <p *ngIf="name?.errors?.['required']">name field is required!</p>
+            <p *ngIf="name?.errors?.['minlength']">
+              name must be at least 6 characters
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="age">age:</label>
+          <input
+            type="number"
+            id="age"
+            formControlName="age"
+            class="form-control"
+          />
+          <div
+            class="error-message text-danger"
+            *ngIf="age?.invalid && age?.touched"
+          >
+            <p *ngIf="age?.errors?.['required']">age field is required!</p>
+            <p *ngIf="age?.errors?.['min']">age must be at least 13 years</p>
+            <p *ngIf="age?.errors?.['max']">age must be at most 60 years</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">email:</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+          />
+          <div
+            class="error-message text-danger"
+            *ngIf="email?.invalid && email?.touched"
+          >
+            <p *ngIf="email?.errors?.['required']">email field is required!</p>
+            <p *ngIf="email?.errors?.['email']">invalid email format!</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">password:</label>
+          <input
+            type="text"
+            id="password"
+            formControlName="password"
+            class="form-control"
+          />
+          <div
+            class="error-message text-danger"
+            *ngIf="password?.invalid && password?.touched"
+          >
+            <p *ngIf="password?.errors?.['required']">
+              password field is required!
+            </p>
+            <p *ngIf="password?.errors?.['minlength']">
+              password must be at least 6 chars
+            </p>
+            <p *ngIf="password?.errors?.['pattern']">
+              invalid password format!
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="form-group">
+          <h5>role:</h5>
+          <input
+            type="radio"
+            id="admin"
+            formControlName="role"
+            name="role"
+            value="admin"
+          />
+          <label for="admin">admin</label>
+          <br />
+          <input
+            type="radio"
+            id="user"
+            formControlName="role"
+            name="role"
+            value="user"
+          />
+          <label for="user">user</label>
+          <div
+            class="error-message text-danger"
+            *ngIf="role?.invalid && role?.touched"
+          >
+            <p *ngIf="role?.errors?.['required']">
+              role selection is required!
+            </p>
+          </div>
+        </div>
+        <button
+          class="btn btn-warning p-2 fw-bold rounded-3"
+          [ngStyle]="{ margin: '3px 40%' }"
+          type="submit"
+        >
+          signUp
+        </button>
+        <div class="text-danger" *ngIf="signUpMessage">
+          {{ signUpMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

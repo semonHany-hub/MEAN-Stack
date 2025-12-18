@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>user-form</title>
+    <style>
+      p {
+        margin: 2px 0;
+        font-size: 14px;
+      }
+      form,
+      table {
+        margin: 30px auto 50px;
+        padding: 15px;
+        width: 400px;
+        text-align: left;
+        box-shadow: 5px 5px 5px grey;
+        border: 1px solid grey;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      input {
+        width: 90%;
+        padding: 4px 7px;
+      }
+      .form-group {
+        margin-bottom: 10px;
+      }
+      .btn-group {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      #add {
+        background-color: green;
+        color: white;
+      }
+      button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        width: 70px;
+        cursor: pointer;
+      }
+      .required {
+        color: orange;
+      }
+      .invalidChars {
+        color: orangered;
+      }
+      .less3,
+      .invalidAge {
+        color: brown;
+      }
+      .invalidFormat {
+        color: red;
+      }
+      tr {
+        margin-bottom: 15px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <legend align="center"><h3>Registration Form</h3></legend>
+      <div class="form-group">
+        <label for="n">Name:</label>
+        <input id="n" />
+      </div>
+
+      <div class="form-group">
+        <label for="e">Email:</label>
+        <input id="e" />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" />
+      </div>
+      <div class="btn-group">
+        <button id="add">Add</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>email</th>
+          <th>age</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      document.getElementById("add").addEventListener("click", checkInputData);
+      function checkInputData(e) {
+        e.preventDefault();
+        let invalidChars = [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "&",
+          "%",
+          "$",
+          "^",
+          "*",
+          "#",
+          "@",
+        ];
+        Array.from(document.getElementsByTagName("p")).forEach(
+          (p) => p.remove() //when we used p.style.display='none' the p is still exist but hidden.
+        );
+        //name validation
+        let nameMessage = document.createElement("p");
+        let nameGroup = document.getElementsByClassName("form-group")[0];
+        let name = nameGroup.querySelector("input").value;
+        // console.log(nameGroup, name);
+        // console.log(!nameGroup.getElementsByClassName("invalidChars"));
+        if (invalidChars.some((char) => name.includes(char))) {
+          nameMessage.textContent = "name mustn't include numbers!";
+          nameMessage.classList.add("invalidChars");
+          nameGroup.appendChild(nameMessage);
+        } else if (name.length == 0) {
+          nameMessage.textContent = "name is required!";
+          nameMessage.classList.add("required");
+          nameGroup.appendChild(nameMessage);
+        } else if (name.length < 3) {
+          nameMessage.textContent = "name must be at least 3 characters!";
+          nameMessage.classList.add("less3");
+          nameGroup.appendChild(nameMessage);
+        }
+        //email validation
+        let emailMessage = document.createElement("p");
+        let emailGroup = document.getElementsByClassName("form-group")[1];
+        let email = emailGroup.querySelector("input").value;
+        let emailRegEx = new RegExp(
+          "^[a-zA-Z0-9._%-]{5,}@[a-zA-Z]{5,}\\.[a-z]{3,}$"
+        );
+        if (email.length == 0) {
+          emailMessage.textContent = "email is required!";
+          emailMessage.classList.add("required");
+          emailGroup.appendChild(emailMessage);
+        } else if (!emailRegEx.test(email)) {
+          emailMessage.textContent =
+            "email must have the format ^[a-zA-Z0-9_%.-]{5,}@[a-zA-Z]{5,}\\.[a-z]{3,}!$";
+          emailMessage.classList.add("invalidFormat");
+          emailGroup.appendChild(emailMessage);
+        }
+
+        //age validation
+        let ageGroup = document.getElementsByClassName("form-group")[2];
+        let age = ageGroup.querySelector("input").value;
+        let ageMessage = document.createElement("p");
+        if (age.length == 0) {
+          ageMessage.textContent = "age is required!";
+          ageMessage.classList.add("required");
+          ageGroup.appendChild(ageMessage);
+        } else if (age > 50 || age < 10) {
+          ageMessage.textContent = "you must be between 10 and 50 years old!";
+          ageMessage.classList.add("invalidAge");
+          ageGroup.appendChild(ageMessage);
+        }
+
+        if (!document.querySelectorAll("p").length) {
+          let inputs = [name, email, age];
+          let row = document.createElement("tr");
+          for (let i = 0; i < 3; i++) {
+            let td = document.createElement("td");
+            td.textContent = inputs[i];
+            row.appendChild(td);
+          }
+          document.querySelector("tbody").appendChild(row);
+        }
+      }
+    </script>
+  </body>
+</html>

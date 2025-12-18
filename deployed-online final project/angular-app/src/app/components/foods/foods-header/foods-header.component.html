@@ -1,0 +1,66 @@
+<header class="d-flex justify-content-between align-items-center">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-danger fw-bold fs-3" routerLink="/home"
+        >Home</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="pizza"
+              routerLinkActive="active text-danger fw-bold"
+              >Pizza</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="pasta"
+              routerLinkActive="active text-danger fw-bold"
+              >Pasta</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="kebab"
+              routerLinkActive="active text-danger fw-bold"
+              >Kebab</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="chicken"
+              routerLinkActive="active text-danger fw-bold"
+              >Chicken</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="icons-group d-flex justify-content-between align-items-center">
+    <span class="fw-bold text-danger fs-2 cart" routerLink="/cart"
+      ><i class="fas fa-shopping-cart"></i>
+    </span>
+    <span class="fw-bold text-light fs-2 logOut" (click)="logOut()"
+      ><i class="fas fa-sign-out-alt"></i>
+    </span>
+  </div>
+</header>

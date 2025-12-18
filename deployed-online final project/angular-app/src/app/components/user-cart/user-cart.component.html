@@ -1,0 +1,11 @@
+<header>
+  <h2 class="text-danger fs-2 fw-bold" routerLink="/home">Home</h2>
+</header>
+
+<app-cart-body *ngIf="!cartsService.isCartEmpty; else empty"></app-cart-body>
+
+<ng-template #empty>
+  <p class="text-center text-danger fs-3 fw-bold m-4">
+    Your cart is empty now!
+  </p>
+</ng-template>

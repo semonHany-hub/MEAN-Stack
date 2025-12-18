@@ -1,0 +1,85 @@
+<header class="d-flex align-items-center justify-content-between">
+  <h3 routerLink="/home" class="text-danger fw-bold fs-2">Home</h3>
+  <h2 class="text-danger fw-bold fs-1">HotRes</h2>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>Sign In</h2>
+      <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="
+              signInForm.get('email')?.invalid &&
+              signInForm.get('email')?.touched
+            "
+            class="text-danger"
+          >
+            <p *ngIf="signInForm.get('email')?.errors?.['required']">
+              Email is required.
+            </p>
+            <p *ngIf="signInForm.get('email')?.errors?.['email']">
+              invalid email syntax!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">password:</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="
+              signInForm.get('password')?.invalid &&
+              signInForm.get('password')?.touched
+            "
+            class="text-danger"
+          >
+            <p *ngIf="signInForm.get('password')?.errors?.['required']">
+              password is required.
+            </p>
+            <p *ngIf="signInForm.get('password')?.errors?.['minlength']">
+              password must be at least 6 characters!
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="signInForm.invalid"
+        >
+          Sign In
+        </button>
+        <div
+          *ngIf="signInMessage"
+          class="alert mt-3"
+          [class.alert-success]="signInMessage.includes('welcome')"
+          [class.alert-danger]="!signInMessage.includes('welcome')"
+        >
+          {{ signInMessage }}
+        </div>
+      </form>
+      <div class="mt-3">
+        <p>
+          Don't have an account?
+          <a routerLink="/signUp" class="btn btn-dark text-light">Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

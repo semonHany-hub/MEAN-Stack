@@ -1,0 +1,15 @@
+<header>
+  <h2 class="text-danger fs-2 fw-bold" routerLink="/home">Home</h2>
+</header>
+
+<div class="container" *ngIf="!errorMessage; else error">
+  <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+</div>
+
+<ng-template #error>
+  <p
+    class="text-danger d-flex align-items-center justify-content-center fs-3 fw-bold m-4"
+  >
+    {{ errorMessage }}
+  </p>
+</ng-template>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+        margin-left: 5px;
+      }
+      section {
+        border: 1px solid black;
+        flex: 1;
+      }
+      div {
+        display: flex;
+        width: 100%;
+        text-align: center;
+      }
+      p {
+        margin: 30px auto;
+        width: 30%;
+        padding: 10px;
+        border: 2px solid black;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <p>select the styles you want to apply upon this paragraph</p>
+    <div>
+      <section>
+        <h4>fontFamily</h4>
+        <ul>
+          <li>
+            <input type="radio" id="arial" name="fontFamily" value="arial" />
+            <label for="arial">arial</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="courier"
+              name="fontFamily"
+              value="courier"
+            />
+            <label for="courier">courier</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="georgia"
+              name="fontFamily"
+              value="georgia"
+            />
+            <label for="georgia">georgia</label>
+          </li>
+          <li>
+            <input type="radio" id="impact" name="fontFamily" value="impact" />
+            <label for="impact">impact</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="verdana"
+              name="fontFamily"
+              value="verdana"
+            />
+            <label for="verdana">verdana</label>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h4>textAlign</h4>
+        <ul>
+          <li>
+            <input type="radio" id="left" name="textAlign" value="left" />
+            <label for="left">left</label>
+          </li>
+          <li>
+            <input type="radio" id="center" name="textAlign" value="center" />
+            <label for="center">center</label>
+          </li>
+          <li>
+            <input type="radio" id="right" name="textAlign" value="right" />
+            <label for="right">right</label>
+          </li>
+          <li>
+            <input type="radio" id="justify" name="textAlign" value="justify" />
+            <label for="justify">justify</label>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h4>lineHeight</h4>
+        <ul>
+          <li>
+            <input type="radio" id="normal" name="lineHeight" value="normal" />
+            <label for="normal">normal</label>
+          </li>
+          <li>
+            <input type="radio" id="10px" name="lineHeight" value="10px" />
+            <label for="10px">10px</label>
+          </li>
+          <li>
+            <input type="radio" id="15px" name="lineHeight" value="15px" />
+            <label for="15px">15px</label>
+          </li>
+          <li>
+            <input type="radio" id="1.5" name="lineHeight" value="1.5" />
+            <label for="1.5">1.5</label>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h4>letterSpacing</h4>
+        <ul>
+          <li>
+            <input
+              type="radio"
+              id="normal2"
+              name="letterSpacing"
+              value="normal"
+            />
+            <label for="normal2">normal</label>
+          </li>
+          <li>
+            <input type="radio" id="-1px" name="letterSpacing" value="-1px" />
+            <label for="-1px">-1px</label>
+          </li>
+          <li>
+            <input type="radio" id="2px" name="letterSpacing" value="2px" />
+            <label for="2px">2px</label>
+          </li>
+          <li>
+            <input type="radio" id="3px" name="letterSpacing" value="3px" />
+            <label for="3px">3px</label>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h4>textIndent</h4>
+        <ul>
+          <li>
+            <input type="radio" id="0px" name="textIndent" value="0px" />
+            <label for="0px">0px</label>
+          </li>
+          <li>
+            <input type="radio" id="5px" name="textIndent" value="5px" />
+            <label for="5px">5px</label>
+          </li>
+          <li>
+            <input type="radio" id="15px2" name="textIndent" value="15px" />
+            <label for="15px2">15px</label>
+          </li>
+          <li>
+            <input type="radio" id="25px" name="textIndent" value="25px" />
+            <label for="25px">25px</label>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h4>textTransform</h4>
+        <ul>
+          <li>
+            <input type="radio" id="none" name="textTransform" value="none" />
+            <label for="none">none</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="capitalize"
+              name="textTransform"
+              value="capitalize"
+            />
+            <label for="capitalize">capitalize</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="uppercase"
+              name="textTransform"
+              value="uppercase"
+            />
+            <label for="uppercase">uppercase</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="lowercase"
+              name="textTransform"
+              value="lowercase"
+            />
+            <label for="lowercase">lowercase</label>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h4>textDecoration</h4>
+        <ul>
+          <li>
+            <input type="radio" id="none2" name="textDecoration" value="none" />
+            <label for="none2">none</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="line-through"
+              name="textDecoration"
+              value="line-through"
+            />
+            <label for="line-through">line-through</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="overline"
+              name="textDecoration"
+              value="overline"
+            />
+            <label for="overline">overline</label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              id="underline"
+              name="textDecoration"
+              value="underline"
+            />
+            <label for="underline">underline</label>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h4>borderColor</h4>
+        <ul>
+          <li>
+            <input type="radio" id="none3" name="borderColor" value="none" />
+            <label for="none3">none</label>
+          </li>
+          <li>
+            <input type="radio" id="pink" name="borderColor" value="pink" />
+            <label for="pink">pink</label>
+          </li>
+          <li>
+            <input type="radio" id="red" name="borderColor" value="red" />
+            <label for="red">red</label>
+          </li>
+          <li>
+            <input type="radio" id="green" name="borderColor" value="green" />
+            <label for="green">green</label>
+          </li>
+          <li>
+            <input type="radio" id="blue" name="borderColor" value="blue" />
+            <label for="blue">blue</label>
+          </li>
+          <li>
+            <input type="radio" id="yellow" name="borderColor" value="yellow" />
+            <label for="yellow">yellow</label>
+          </li>
+          <li>
+            <input type="radio" id="purple" name="borderColor" value="purple" />
+            <label for="purple">purple</label>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <script src="./apply-styles.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+img {
+  width: 200px;
+  height: 200px;
+}
+
+span.btn {
+  font-size: 1.3em;
+  color: white;
+  background-color: #000;
+  margin-bottom: 20px;
+}
+
+span.users {
+  position: absolute;
+  right: 20px;
+}

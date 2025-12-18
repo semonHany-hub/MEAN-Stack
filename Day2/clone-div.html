@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day2</title>
+    <style>
+      #original {
+        background-color: brown;
+        cursor: pointer;
+      }
+      div {
+        margin: 30px auto;
+        width: fit-content;
+        padding: 10px;
+        border: 1px black solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="original">
+      click here to clone a copy with a different background-color
+    </div>
+    <script>
+      const colors = [
+        "red",
+        "green",
+        "blue",
+        "brown",
+        "yellow",
+        "grey",
+        "darkgreen",
+        "white",
+      ];
+      let originalDiv = document.getElementById("original");
+      originalDiv.addEventListener("click", () => {
+        let copiedDiv = document.createElement("div");
+        copiedDiv.style.backgroundColor = colors[Math.floor(Math.random() * 8)];
+        copiedDiv.textContent = originalDiv.innerText;
+        document.body.appendChild(copiedDiv);
+      });
+    </script>
+  </body>
+</html>

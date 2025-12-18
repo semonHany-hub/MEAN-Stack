@@ -1,0 +1,32 @@
+header {
+  height: 100px;
+  background-color: #000;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+span.signIn {
+  font-size: 1.3em;
+  color: white;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #000;
+}
+
+#hidden {
+  visibility: hidden;
+}
+
+.cart {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cart:hover {
+  transform: translateY(-2px);
+}

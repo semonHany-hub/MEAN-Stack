@@ -1,0 +1,41 @@
+<input type="text" [(ngModel)]="search" />
+<h5>Hello {{ search }}!</h5>
+
+<div class="container">
+  <h2>colors</h2>
+
+  @for(color of colors; track $index){
+  <ng-container>
+    <h2 class="text-center">size in memory: {{ $count }}</h2>
+    <div [class.bg-color]="color" class="p-3 w-3">{{ color }}</div>
+    <span class="last">is the last: {{ $last }}</span>
+    <span class="odd">is odd: {{ $odd }}</span>
+    <span class="even">is even: {{ $even }}</span>
+  </ng-container>
+  }@empty {
+  <p class="error-message">sorry colors array is empty</p>
+  }
+</div>
+
+<div class="container">
+  <h1>roles with if decorator</h1>
+  <span>current role: {{ role }}</span>
+  <button (click)="changeRole()">change role</button>
+  <br />
+  @if(role==="admin") {
+  <h2 class="text-center">Welcome Admin</h2>
+  } @else if(role==="user") {
+  <h2 class="text-center">Welcome User</h2>
+  } @else {
+  <h2 class="text-center">Welcome Guest</h2>
+  }
+
+  <h1>roles with switch decorator</h1>
+  @switch(role) { @case("admin") {
+  <h2 class="text-center">Admin Dashboard</h2>
+  } @case("user") {
+  <h2 class="text-center">User Dashboard</h2>
+  } @default {
+  <h2 class="text-center">Guest Dashboard</h2>
+  } }
+</div>

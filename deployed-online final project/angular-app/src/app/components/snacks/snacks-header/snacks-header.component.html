@@ -1,0 +1,81 @@
+<header class="d-flex justify-content-between align-items-center">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-danger fw-bold fs-3" routerLink="/">Home</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#foodNavbar"
+        aria-controls="foodNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="foodNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="popcorn"
+              routerLinkActive="active text-danger fw-bold"
+              >Popcorn</a
+            >
+          </li> -->
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="hamburger"
+              routerLinkActive="active text-danger fw-bold"
+              >Hamburger</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="cake"
+              routerLinkActive="active text-danger fw-bold"
+              >Cake</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="fries"
+              routerLinkActive="active text-danger fw-bold"
+              >Fries</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="chips"
+              routerLinkActive="active text-danger fw-bold"
+              >Cookies</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="croissant"
+              routerLinkActive="active text-danger fw-bold"
+              >Croissant</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="icons-group d-flex justify-content-between align-items-center">
+    <span class="fw-bold text-danger fs-2 cart" routerLink="/cart"
+      ><i class="fas fa-shopping-cart"></i>
+    </span>
+    <span class="fw-bold text-light fs-2 logOut" (click)="logOut()"
+      ><i class="fas fa-sign-out-alt"></i>
+    </span>
+  </div>
+</header>

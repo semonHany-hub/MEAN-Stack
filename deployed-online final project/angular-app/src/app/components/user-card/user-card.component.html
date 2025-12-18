@@ -1,0 +1,10 @@
+<div class="card" [id]="user._id">
+  <p class="fw-bold fs-4 text-danger">{{ user.name }}</p>
+  <p><strong class="text-success">Age: </strong>{{ user.age }}</p>
+  <p><strong class="text-success">Email: </strong>{{ user.email }}</p>
+  <p>{{ user.role }}</p>
+  <div class="btn-group">
+    <button class="btn btn-danger" (click)="deleteUser()">Delete</button>
+    <button class="btn btn-success" (click)="goToCart()">Cart</button>
+  </div>
+</div>

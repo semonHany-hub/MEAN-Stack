@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shapes</title>
+  </head>
+  <body>
+    <!-- <script type="module" src="./shapes-classes.js"></script> -->
+    <script type="module">
+      //the concept of module has appeared with the creation of ES6 to enable separate js codes in different files.
+      console.log(
+        "\t\tshapes using traditional javaScript functions [factoryF, constructorF, Object.create()]"
+      );
+      function rectangle(width, length) {
+        return {
+          width: width,
+          length: length,
+        };
+      } //factory function (reference)
+      let Rec1 = rectangle(5, 6); //(instance)
+      Rec1["calcArea"] = function () {
+        Rec1.area = Rec1["width"] * Rec1["length"];
+      };
+      Rec1["toString"] = function () {
+        return (
+          "Area: " +
+          Rec1["area"] +
+          "\nlength: " +
+          Rec1["length"] +
+          ", width: " +
+          Rec1["width"]
+        );
+      };
+      Rec1.calcArea();
+      display.bind(Rec1)("rectangle");
+      // display.call(Rec1, ["rectangle"]);
+
+      function square(rip) {
+        this.rip = rip;
+      } //constructor function
+      square.prototype.calcArea = function () {
+        this.area = this.rip * this.rip;
+      };
+      square.prototype.toString = function () {
+        return "Area: " + this.area + "\nrip-length: " + this.rip;
+      };
+      let Sq1 = new square(5);
+      Sq1.calcArea();
+      let Sq2 = Object.create(square.prototype);
+      Sq2.rip = 3; //we must declare this property separately as square.prototype include declared methods only
+      Sq2.calcArea();
+      display.call(Sq1, "square1");
+      display.apply(Sq2, ["square2", 7]);
+
+      let circle = {
+        radius: 7,
+        area: 154,
+      };
+      let Cir1 = Object.create(circle);
+      Cir1.toString = function () {
+        return "Area: " + Cir1.area + "\nradius: " + Cir1.radius;
+      };
+      display.call(Cir1, "circle");
+
+      function display(type) {
+        console.log(`\t${type}\n` + this.toString());
+      }
+      //js
+
+      console.log(
+        "***** shapes using ES6(EcmaScript) classes and objects *****"
+      );
+      import { Rectangle, Circle, Square, Shape } from "./shapes-classes.js";
+
+      let sq1 = new Square(5);
+      sq1.calcArea();
+      sq1.display();
+
+      let rec1 = new Rectangle(6, 8);
+      rec1.calcArea();
+      rec1.display();
+
+      let cir1 = new Circle(3);
+      cir1.calcArea();
+      cir1.display();
+
+      let shape = new Shape(9); //will throw error
+      //ES6
+    </script>
+  </body>
+</html>

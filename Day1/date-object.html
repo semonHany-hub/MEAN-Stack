@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>date</title>
+
+    <style>
+      table th,
+      table td {
+        border: 2px solid red;
+        margin: 2px;
+      }
+
+      table {
+        width: 50%;
+        margin: 30px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function getDayFullname(inputDate) {
+        let days = [
+          "saturday",
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+        ];
+        let date = new Date(inputDate); //the passed parameter should be of type string start with the year then month then day separated by '/' or '-'
+        console.log(date.getDay(), date.getDate()); //the method getDay() return the current day index from the week days [0,6], while getDate() return the day's number of the month days [1-30]
+      }
+      return days[date.getDay()];
+      console.log(getDayFullname("2004/6/18"));
+      //the day fullname
+
+      function testInput(input) {
+        const regex = /^\d{2}-\d{2}-\d{4}$/;
+        if (regex.test(input)) {
+          let parts = input.split("-");
+          console.log(parts);
+          let date = new Date(parts[2], parts[1], parts[0]);
+          return date.toLocaleDateString();
+        } else {
+          return "wrong date format!";
+        }
+      }
+
+      let inputDate = prompt("enter date in the following format (dd-mm-yyyy)");
+      alert(testInput(inputDate));
+      //check input date
+    </script>
+  </body>
+</html>

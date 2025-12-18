@@ -1,0 +1,39 @@
+<div class="container" *ngIf="meals?.length; else notFound">
+  <div class="search d-flex flex-column align-items-center">
+    <span (click)="isSearched = !isSearched"
+      ><i class="fa fa-search text-danger fs-1"></i>
+    </span>
+    <input *ngIf="isSearched" type="text" (input)="handleSearch($event)" />
+  </div>
+  <ng-container *ngFor="let meal of meals">
+    <app-card
+      *ngIf="meal && meal._id"
+      [meal]="meal"
+      page="category"
+      (showDetailsModal)="showModal($event)"
+    ></app-card>
+  </ng-container>
+</div>
+
+<ng-template #notFound
+  ><p class="notFound text-danger fs-1 fw-2">Product Not Found</p></ng-template
+>
+
+<div
+  class="custom-modal-wrapper d-flex justify-content-center align-items-center"
+  *ngIf="selectedMeal"
+>
+  <div class="custom-modal bg-light">
+    <span
+      (click)="selectedMeal = null"
+      class="close d-flex justify-content-center align-items-center fs-1 fw-bold"
+      >&times;</span
+    >
+    <div class="card">
+      <img [src]="selectedMeal.image" />
+      <h3>{{ selectedMeal.title }}</h3>
+      <p>{{ selectedMeal.description }}</p>
+      <span><strong>Price: </strong>{{ selectedMeal.price }}</span>
+    </div>
+  </div>
+</div>

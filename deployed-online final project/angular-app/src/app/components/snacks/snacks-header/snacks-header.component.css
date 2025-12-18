@@ -1,0 +1,51 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: #000;
+  padding: 15px;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0px auto 20px;
+  z-index: 1;
+}
+
+li,
+.cart,
+.logOut {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+a:hover {
+  color: blanchedalmond;
+}
+
+li:hover,
+.cart:hover,
+.logOut {
+  transform: translateY(-2px);
+}
+
+.icons-group {
+  width: 150px;
+}

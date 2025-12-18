@@ -1,0 +1,43 @@
+<div *ngIf="!cartsService.isCartEmpty; else empty" class="container">
+  <div class="products-container" *ngIf="cartProducts.length">
+    <app-card
+      *ngFor="let product of cartProducts"
+      [meal]="product"
+      [cartProducts]="cartProducts"
+      (showDetailsModal)="showModal($event)"
+      (totalPriceEmitter)="updateTotalPrice($event)"
+      page="cart"
+    ></app-card>
+  </div>
+  <span
+    *ngIf="cartsService.totalPrice"
+    class="price text-light fs-5 p-2 rounded-3"
+    ><strong class="text-danger fs-4">Total price:</strong>
+    {{ cartsService.totalPrice.toFixed(2) }}</span
+  >
+</div>
+
+<ng-template #empty>
+  <p class="text-center text-danger fs-3 fw-bold m-4">
+    Your cart is empty now!
+  </p>
+</ng-template>
+
+<div
+  class="custom-modal-wrapper d-flex justify-content-center align-items-center"
+  *ngIf="selectedMeal"
+>
+  <div class="custom-modal bg-light">
+    <span
+      (click)="selectedMeal = null"
+      class="close d-flex justify-content-center align-items-center fs-1 fw-bold"
+      >&times;</span
+    >
+    <div class="card">
+      <img [src]="selectedMeal.image" />
+      <h3>{{ selectedMeal.title }}</h3>
+      <p>{{ selectedMeal.description }}</p>
+      <span><strong>Price: </strong>{{ selectedMeal.price }}</span>
+    </div>
+  </div>
+</div>

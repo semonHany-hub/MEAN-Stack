@@ -1,0 +1,56 @@
+<header class="d-flex justify-content-between align-items-center">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <!-- Brand / Home Link -->
+      <a
+        class="navbar-brand text-danger fw-bold fs-3"
+        routerLink="/"
+        routerLinkActive="text-light"
+        >Home</a
+      >
+
+      <!-- Collapse Toggle Button for Small Screens -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible Content -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="mango"
+              routerLinkActive="active text-danger fw-bold"
+              >Mango</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-light"
+              routerLink="ice cream"
+              routerLinkActive="active text-danger fw-bold"
+              >Ice Cream</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="icons-group d-flex justify-content-between align-items-center">
+    <span class="fw-bold text-danger fs-2 cart" routerLink="/cart"
+      ><i class="fas fa-shopping-cart"></i>
+    </span>
+    <span class="fw-bold text-light fs-2 logOut" (click)="logOut()"
+      ><i class="fas fa-sign-out-alt"></i>
+    </span>
+  </div>
+</header>

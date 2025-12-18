@@ -1,0 +1,40 @@
+<div class="card" [id]="meal._id">
+  <img [src]="meal.image" />
+  <h3>{{ meal.title }}</h3>
+  <span *ngIf="page == 'cart'"><strong>Quantity: </strong>{{ quantity }}</span>
+  <span *ngIf="page == 'cart'"><strong>Price: </strong>{{ totalPrice }}</span>
+  <div class="btn-group">
+    <button (click)="showDetails()">details</button>
+    <button *ngIf="page == 'category'" (click)="handleAddToCart()">
+      add to cart
+    </button>
+    <button
+      *ngIf="
+        page == 'cart' &&
+        (!cartsService.selectedCartUserToken ||
+          cartsService.selectedCartUserToken == localStorageToken)
+      "
+      (click)="handleDeleteFromCart()"
+    >
+      delete one item
+    </button>
+    <button
+      *ngIf="page == 'category' && usersService.currentUser?.role === 'admin'"
+      (click)="handleDeleteProduct()"
+      class="bg-danger text-light"
+    >
+      Delete(DB)
+    </button>
+    <button
+      *ngIf="
+        page == 'cart' &&
+        (!cartsService.selectedCartUserToken ||
+          cartsService.selectedCartUserToken == localStorageToken)
+      "
+      (click)="handleDeleteWholeProduct()"
+      class="bg-danger text-light"
+    >
+      Delete
+    </button>
+  </div>
+</div>

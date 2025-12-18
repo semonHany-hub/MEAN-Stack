@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>info table</title>
+    <style>
+      table th,
+      table td {
+        border: 2px solid red;
+        margin: 2px;
+      }
+
+      table {
+        width: 50%;
+        margin: 30px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>name</th>
+        <th>age</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      let tableBody = document.querySelector("tbody");
+      let personsNum = Number(
+        prompt("enter the number of persons you want to insert into table")
+      );
+      if (!isNaN(personsNum))
+        for (let i = 1; i <= personsNum; i++) {
+          let tr = document.createElement("tr");
+          let name = document.createElement("td");
+          name.innerText = prompt(`enter person${i}'s name`);
+          let age = document.createElement("td");
+          age.innerText = prompt(`enter person${i}'s age`);
+
+          tr.append(name, age);
+          tableBody.appendChild(tr);
+        }
+      else alert("you must enter a number value!");
+    </script>
+  </body>
+</html>
